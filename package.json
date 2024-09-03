@@ -1,6 +1,5 @@
 {
-  "name": "svelte-web-extension-template",
-  "private": true,
+  "name": "remove-ai-overview",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
