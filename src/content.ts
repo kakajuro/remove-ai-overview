@@ -5,11 +5,9 @@ let blankSpaceRemoved = false;
 const removeAIOverview = () => {
   let elements = document.querySelectorAll("[data-mcp]") && document.querySelectorAll("[data-mcpr]");
 
-  console.log("ELEMENTS LENGTH: " + elements.length);
-
   elements.forEach(aiElement => {
     aiElement.parentElement?.removeChild(aiElement);
-    console.log("Remove AI overview section!");
+    console.log("Removed AI overview section!");
 
     if (!blankSpaceRemoved) {
       let headersList = document.querySelectorAll("h1");
