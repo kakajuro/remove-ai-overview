@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 
-console.log("Hello from the background!");
+console.log("remove-ai-overview running");
 
 browser.runtime.onInstalled.addListener((details) => {
   console.log("Extension installed:", details);
