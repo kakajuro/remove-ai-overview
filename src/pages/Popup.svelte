@@ -1,5 +1,5 @@
 
-<main class="w-[300px] h-[450px] p-6 flex flex-col">
+<main class="w-[300px] h-[450px] p-6 flex flex-col font-jost font-bold">
   <div class="w-screen">
     Top Bar
   </div>
@@ -9,7 +9,7 @@
       class="max-w-48 max-h-48"
       alt="Remove AI Overview Logo"
     />
-    <h1 class="pt-6 pb-4">Remove AI Overview</h1>
+    <h1 class="pt-6 pb-4 text-2xl">Remove AI Overview</h1>
     <h1>Slider here</h1>
   </div>
 

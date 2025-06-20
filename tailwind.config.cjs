@@ -1,7 +1,11 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        "varela": ["Varela Round", "sans-serif"]
+      }
+    }
   },
   plugins: []
 };
