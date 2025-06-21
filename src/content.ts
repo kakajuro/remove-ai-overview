@@ -1,4 +1,3 @@
-console.log("Hello from content script");
 
 let blankSpaceRemoved = false;
 
@@ -31,3 +30,5 @@ let observer = new MutationObserver(mutations => mutations.forEach(() => removeA
 
 let container = document.documentElement || document.body
 observer.observe(container, observerConfig);
+
+console.log("remove-ai-overviews loaded.");
