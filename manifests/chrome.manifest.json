@@ -17,7 +17,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["src/content.ts"],
-      "run_at": "document_end"
+      "run_at": "document_start"
     }
   ],
   "background": {

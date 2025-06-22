@@ -1,19 +1,33 @@
 
-let blankSpaceRemoved = false;
+let removed = false;
+
+const getAncestor = (baseNode:HTMLElement|Element, ancestor:number):HTMLElement => {
+
+  let ancestorElement:HTMLElement = baseNode.parentElement!;
+  ancestor -= 1;
+
+  // If the ancestor we're looking for is the parent then stop
+  // Otherwise traverse up
+  if (ancestor != 0) {
+    for (let i = 0; i < ancestor; i++) {
+      ancestorElement = ancestorElement.parentElement!;
+    }
+  }
+
+  return ancestorElement;
+
+}
 
 const removeAIOverview = () => {
-  let elements = document.querySelectorAll("[data-mcp]") && document.querySelectorAll("[data-mcpr]");
+  let elements = document.querySelectorAll("[data-mcpr]");
 
   elements.forEach(aiElement => {
-    aiElement.parentElement?.removeChild(aiElement);
-    console.log("Removed AI overview section!");
 
-    if (!blankSpaceRemoved) {
-      let headersList = document.querySelectorAll("h1");
-      let searchResultHeader = headersList[headersList.length-1];
-      let searchResultParent = searchResultHeader.parentNode;
-      searchResultParent?.lastChild?.remove();
-      blankSpaceRemoved = true;
+    if (!removed) {
+      let masterNode = getAncestor(aiElement, 7);
+      masterNode.lastChild?.remove();
+      removed = true;
+      console.log("Removed AI overview section!");
     }
 
   });
