@@ -1,3 +1,7 @@
+<script>
+  import ToggleSwitch from "../components/ToggleSwitch.svelte";
+  import { extensionRunningState } from "../lib/extensionState.svelte";
+</script>
 
 <main class="w-[300px] h-[450px] p-6 flex flex-col font-jost text-white bg-custom-bg">
   <div class="w-screen flex flex-row cursor-default select-none">
@@ -12,8 +16,12 @@
     </div>
   </div>
   <div class="flex flex-col items-center justify-center pt-12">
-    <h1 class="pt-6 pb-4 text-2xl">AI Overviews Off</h1>
-    <h1>Slider here</h1>
+    {#if extensionRunningState.value}
+      <h1 class="pt-6 pb-4 text-2xl">AI Overviews hidden</h1>
+    {:else}
+      <h1 class="pt-6 pb-4 text-2xl">AI Overviews visible</h1>
+    {/if}
+    <ToggleSwitch />
   </div>
 
 </main>

@@ -2309,6 +2309,11 @@ svelte-check@^4.0.0:
     picocolors "^1.0.0"
     sade "^1.7.4"
 
+svelte-switcher@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/svelte-switcher/-/svelte-switcher-1.0.2.tgz#c8063c78fd71240177eeb9834396cefa623e2640"
+  integrity sha512-XAcK1nwFT4cqbCVFca/QXLHzj16AUd6KNfi2oEBoyC+4SoGi+YkPFVoNCdtZu4GDZ2v6NU/NPDAcFW1h1KfQwA==
+
 svelte@^5.34.7:
   version "5.34.7"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-5.34.7.tgz#c61121e7082cc0cb3a6334c7113268e8a8a5de98"
