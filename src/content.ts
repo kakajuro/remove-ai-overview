@@ -1,3 +1,6 @@
+import browser from "webextension-polyfill";
+
+import { getStoredExtensionState } from "./lib/extensionState.svelte";
 
 let removed = false;
 
@@ -34,15 +37,40 @@ const removeAIOverview = () => {
 
 }
 
+const setExtensionRunning = async () => {
+
+  let extensionRunning = await getStoredExtensionState();
+
+  if (extensionRunning) {
+    removeAIOverview();
+    console.log("Resumed remove-ai-overview");
+  } else {
+    observer.disconnect();
+    console.log("Paused remove-ai-overview");
+  }
+
+}
+
+// Message listener
+browser.runtime.onMessage.addListener(msg => {
+  if (msg == "extensionStateChange") {
+    setExtensionRunning();
+  }
+
+});
+
 // Mutation Observer
 let observerConfig = {
   subtree : true,
   childList: true,
 };
 
-let observer = new MutationObserver(mutations => mutations.forEach(() => removeAIOverview()));
+let observer = new MutationObserver(mutations => mutations.forEach(() => {
+  removeAIOverview()}
+));
 
 let container = document.documentElement || document.body
 observer.observe(container, observerConfig);
 
+setExtensionRunning();
 console.log("remove-ai-overviews loaded.");

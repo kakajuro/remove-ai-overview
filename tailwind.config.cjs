@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "custom-bg": "#09090B"
+        "custom-bg": "#09090B",
+        "custom-red": "#FF0000"
       },
       fontFamily: {
         "varela": ["Varela Round", "sans-serif"]

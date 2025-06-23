@@ -1,6 +1,7 @@
 import browser from "webextension-polyfill";
 
 export const extensionRunningState = $state({ value: null });
+export const switchClicked = $state({ value: false });
 
 export async function setStoredExtensionState(value:Boolean) {
   await browser.storage.local.set({"extensionRunning": value})
