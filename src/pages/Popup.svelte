@@ -7,7 +7,7 @@
   import { extensionRunningState, switchClicked } from "../lib/extensionState.svelte";
 
   import { Bug, Heart, Globe } from "@lucide/svelte";
-    import { getManifestVersion } from "../lib/getManifestVersion";
+  import { getManifestVersion } from "../lib/getManifestVersion";
 
   let showReloadMessage = $state(false);
   let manifestVersion = $state("");
@@ -53,18 +53,18 @@
     <ToggleSwitch />
   </div>
   <div class="pt-12 flex justify-between">
-    <IconButton>
+    <IconButton callback={() => window.open("", "_blank")}>
       <Globe />
       <p class="pl-2">Website</p>
     </IconButton>
     <div class="mx-2"></div>
-    <IconButton>
+    <IconButton callback={() => window.open("https://github.com/kakajuro/remove-ai-overview/issues", "_blank")}>
       <Bug />
       <p class="pl-2">Report a bug</p>
     </IconButton>
   </div>
   <div class="pt-4 w-screen flex justify-center">
-    <IconButton sponsor={true}>
+    <IconButton sponsor={true} callback={() => window.open("", "_blank")}>
       <div class="py-2 flex flex-row">
         <Heart />
         <p class="pl-2 pt-[2px]">Support</p>
