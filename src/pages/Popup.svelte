@@ -6,12 +6,15 @@
 
   import { extensionRunningState, switchClicked } from "../lib/extensionState.svelte";
 
-  import { Github, Heart, LaptopMinimal } from "@lucide/svelte";
+  import { Bug, Heart, Globe } from "@lucide/svelte";
+    import { getManifestVersion } from "../lib/getManifestVersion";
 
   let showReloadMessage = $state(false);
+  let manifestVersion = $state("");
 
   onMount(() => {
     showReloadMessage = false;
+    manifestVersion = getManifestVersion();
   });
 
   $effect(() => {
@@ -26,7 +29,7 @@
 
 </script>
 
-<main class="relative w-[300px] h-[420px] p-6 flex flex-col font-jost text-white bg-custom-bg">
+<main class="relative w-[300px] h-[420px] p-6 flex flex-col font-jost text-white bg-custom-bg no-scrollbar overflow-y-auto">
   <div class="w-screen flex flex-row cursor-default select-none">
     <img
       src="/removeaioverviewlogo.png"
@@ -35,7 +38,7 @@
     />
     <div class="pl-4">
       <h2 class="text-lg font-bold">Remove AI Overview</h2>
-      <p>Version 1.0.0</p>
+      <p>Version {manifestVersion}</p>
     </div>
   </div>
   <div class="flex flex-col items-center justify-center pt-12">
@@ -51,20 +54,20 @@
   </div>
   <div class="pt-12 flex justify-between">
     <IconButton>
-      <LaptopMinimal />
+      <Globe />
       <p class="pl-2">Website</p>
     </IconButton>
     <div class="mx-2"></div>
     <IconButton>
-      <Github />
-      <p class="pl-2">Source code</p>
+      <Bug />
+      <p class="pl-2">Report a bug</p>
     </IconButton>
   </div>
   <div class="pt-4 w-screen flex justify-center">
-    <IconButton>
+    <IconButton sponsor={true}>
       <div class="py-2 flex flex-row">
         <Heart />
-        <p class="pl-2 pt-[2px]">Sponsor</p>
+        <p class="pl-2 pt-[2px]">Support</p>
       </div>
     </IconButton>
     <div class="ml-14"></div>

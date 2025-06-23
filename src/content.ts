@@ -4,7 +4,7 @@ import { getStoredExtensionState } from "./lib/extensionState.svelte";
 
 let removed = false;
 
-const getAncestor = (baseNode:HTMLElement|Element, ancestor:number):HTMLElement => {
+const getAncestor = (baseNode:HTMLElement|Element, ancestor:number) => {
 
   let ancestorElement:HTMLElement = baseNode.parentElement!;
   ancestor -= 1;
@@ -15,6 +15,7 @@ const getAncestor = (baseNode:HTMLElement|Element, ancestor:number):HTMLElement 
     for (let i = 0; i < ancestor; i++) {
       ancestorElement = ancestorElement.parentElement!;
     }
+
   }
 
   return ancestorElement;
@@ -22,18 +23,43 @@ const getAncestor = (baseNode:HTMLElement|Element, ancestor:number):HTMLElement 
 }
 
 const removeAIOverview = () => {
-  let elements = document.querySelectorAll("[data-mcpr]");
 
-  elements.forEach(aiElement => {
+  // 2 different approaches based on whether it is an "inline" AI overview or not
 
-    if (!removed) {
-      let masterNode = getAncestor(aiElement, 7);
-      masterNode.lastChild?.remove();
-      removed = true;
-      console.log("Removed AI overview section!");
-    }
+  console.log("here");
 
-  });
+  let searchResultsContainer = document.getElementById("search");
+  let inlineAIoverviews = searchResultsContainer?.querySelectorAll("[data-mcpr][data-mcp]");
+
+  if (inlineAIoverviews) {
+
+    inlineAIoverviews.forEach(aiElement => {
+
+      if (!removed) {
+        let masterNode = getAncestor(aiElement, 3);
+        masterNode.remove();
+        removed = true;
+        console.log("Removed inline AI overview section!");
+      }
+
+    });
+
+  } else {
+
+    let elements = document.querySelectorAll("[data-mcpr][data-mcp]");
+
+    elements.forEach(aiElement => {
+
+      if (!removed) {
+        let masterNode = getAncestor(aiElement, 7);
+        masterNode.lastChild?.remove();
+        removed = true;
+        console.log("Removed AI overview section!");
+      }
+
+    });
+
+  }
 
 }
 
@@ -41,9 +67,9 @@ const setExtensionRunning = async () => {
 
   let extensionRunning = await getStoredExtensionState();
 
-  if (extensionRunning) {
+  if (extensionRunning === true) {
     removeAIOverview();
-    console.log("Resumed remove-ai-overview");
+    observer.observe(container, observerConfig);
   } else {
     observer.disconnect();
     console.log("Paused remove-ai-overview");
@@ -56,7 +82,6 @@ browser.runtime.onMessage.addListener(msg => {
   if (msg == "extensionStateChange") {
     setExtensionRunning();
   }
-
 });
 
 // Mutation Observer
@@ -70,7 +95,6 @@ let observer = new MutationObserver(mutations => mutations.forEach(() => {
 ));
 
 let container = document.documentElement || document.body
-observer.observe(container, observerConfig);
 
 setExtensionRunning();
 console.log("remove-ai-overviews loaded.");

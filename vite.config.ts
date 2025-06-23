@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-import webExtension, { readJsonFile } from "vite-plugin-web-extension";
+import webExtension from "vite-plugin-web-extension";
 
 import path from "path";
 
@@ -15,7 +15,7 @@ export default defineConfig({
       browser: target,
       manifest: `manifests/${target.toLowerCase()}.manifest.json`,
       watchFilePaths: ["package.json", "manifest.json"],
-      //disableAutoLaunch: target === "chrome" ? false : true
+      disableAutoLaunch: target === "chrome" ? false : true
     }),
   ],
   build: {

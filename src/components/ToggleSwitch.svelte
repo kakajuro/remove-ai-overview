@@ -25,11 +25,9 @@
     switchClicked.value = true;
 
     // Alert content script that state has changed
-    browser.tabs.query({currentWindow: true, active: true})
+    browser.tabs.query({ currentWindow: true, active: true })
     .then(tabs => {
       let tabId = tabs[0].id;
-
-      console.log(tabId);
 
       browser.tabs.sendMessage(tabId, "extensionStateChange")
       .then(() => console.log("Message sent sucessfully"));
