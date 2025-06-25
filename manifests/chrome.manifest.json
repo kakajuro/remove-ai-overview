@@ -16,12 +16,12 @@
   "content_scripts": [
     {
       "matches": ["https://*.google.com/*"],
-      "js": ["src/content.ts"],
+      "js": ["src/rao-content.ts"],
       "run_at": "document_start"
     }
   ],
   "background": {
-    "service_worker": "src/background.ts"
+    "service_worker": "src/rao-background.ts"
   },
   "action": {
     "default_popup": "src/popup.html"

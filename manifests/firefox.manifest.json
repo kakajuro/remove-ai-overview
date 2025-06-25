@@ -16,7 +16,7 @@
   "content_scripts": [
     {
       "matches": ["https://*.google.com/*"],
-      "js": ["src/content.ts"],
+      "js": ["src/rao-content.ts"],
       "run_at": "document_start"
     }
   ],
@@ -24,6 +24,6 @@
     "default_popup": "src/popup.html"
   },
   "background": {
-    "scripts": ["src/background.ts"]
+    "scripts": ["src/rao-background.ts"]
   }
 }
