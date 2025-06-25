@@ -1,13 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "svelteWebextensionTemplate",
+  "name": "Remove AI Overview",
   "version": "1.0.0",
-  "description": "A cross platform web extension template using svelte",
+  "description": "Remove AI Overviews from Google.",
   "icons": {
     "16": "icon/16.png",
     "32": "icon/32.png",
     "48": "icon/48.png",
-    "96": "icon/96.png",
     "128": "icon/128.png"
   },
   "permissions": [
@@ -16,7 +15,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://*.google.com/*"],
       "js": ["src/content.ts"],
       "run_at": "document_start"
     }
