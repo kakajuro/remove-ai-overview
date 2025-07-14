@@ -53,7 +53,7 @@
     <ToggleSwitch />
   </div>
   <div class="pt-12 flex justify-between">
-    <IconButton callback={() => window.open("", "_blank")}>
+    <IconButton callback={() => window.open("https://removeaioverview.com", "_blank")}>
       <Globe />
       <p class="pl-2">Website</p>
     </IconButton>
@@ -64,7 +64,7 @@
     </IconButton>
   </div>
   <div class="pt-4 w-screen flex justify-center">
-    <IconButton sponsor={true} callback={() => window.open("", "_blank")}>
+    <IconButton sponsor={true} callback={() => window.open("https://removeaioverview.com/donate", "_blank")}>
       <div class="py-2 flex flex-row">
         <Heart />
         <p class="pl-2 pt-[2px]">Support</p>
