@@ -22,14 +22,15 @@ const getAncestor = (baseNode:HTMLElement|Element, ancestor:number) => {
 
 }
 
-const removeAIOverview = () => {
+const removeAIOverview = (forceUpdate?:boolean) => {
 
-  // 2 different approaches based on whether it is an "inline" AI overview or not
-
-  console.log("here");
+  if (forceUpdate) {
+    removed = false;
+  }
 
   let searchResultsContainer = document.getElementById("search");
   let inlineAIoverviews = searchResultsContainer?.querySelectorAll("[data-mcpr][data-mcp]");
+  let headingAIOverviews = document.querySelectorAll("[data-mcpr][data-mcp]");
 
   if (inlineAIoverviews) {
 
@@ -44,11 +45,11 @@ const removeAIOverview = () => {
 
     });
 
-  } else {
+  }
 
-    let elements = document.querySelectorAll("[data-mcpr][data-mcp]");
+  if (headingAIOverviews) {
 
-    elements.forEach(aiElement => {
+    headingAIOverviews.forEach(aiElement => {
 
       if (!removed) {
         let masterNode = getAncestor(aiElement, 7);
@@ -68,8 +69,8 @@ const setExtensionRunning = async () => {
   let extensionRunning = await getStoredExtensionState();
 
   if (extensionRunning === true) {
-    removeAIOverview();
     observer.observe(container, observerConfig);
+    removeAIOverview(true);
   } else {
     observer.disconnect();
     console.log("Paused remove-ai-overview");

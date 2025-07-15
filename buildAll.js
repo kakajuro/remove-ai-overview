@@ -5,6 +5,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
+import manifest from "./manifests/chrome.manifest.json";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -43,11 +45,11 @@ for (let platform of platforms) {
 
   console.log(`Attempting to zip: ${platform.toUpperCase()}...`);
 
-  let inPath = path.join(__dirname, `/builds/${platform}_dist`);
+  let inPath = path.join(__dirname, `/builds/${platform}_dist_v${manifest.version}`);
   let outPath = path.join(__dirname, `/builds/${platform}_dist.zip`);
 
-  await zipdir(inPath, 
-    { each: path => console.log(path.replace(/^.*[\\/]/, ''), `added to ${platform.toUpperCase()} zip`), saveTo: outPath },  
+  await zipdir(inPath,
+    { each: path => console.log(path.replace(/^.*[\\/]/, ''), `added to ${platform.toUpperCase()} zip`), saveTo: outPath },
     (err, buffer) => {
       if (err) {
         console.warn("An error occurred while zipping: " + err);
