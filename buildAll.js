@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
-import manifest from "./manifests/chrome.manifest.json";
+import manifest from "./manifests/chrome.manifest.json" with { type:"json" };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,8 +45,8 @@ for (let platform of platforms) {
 
   console.log(`Attempting to zip: ${platform.toUpperCase()}...`);
 
-  let inPath = path.join(__dirname, `/builds/${platform}_dist_v${manifest.version}`);
-  let outPath = path.join(__dirname, `/builds/${platform}_dist.zip`);
+  let inPath = path.join(__dirname, `/builds/${platform}_dist`);
+  let outPath = path.join(__dirname, `/builds/rao_${platform}_dist_v${manifest.version}.zip`);
 
   await zipdir(inPath,
     { each: path => console.log(path.replace(/^.*[\\/]/, ''), `added to ${platform.toUpperCase()} zip`), saveTo: outPath },
