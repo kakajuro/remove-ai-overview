@@ -1,12 +1,12 @@
 <div align="center">
-  <a href="https://removeaioverview.com" target="_blank"><img src="public/removeaioverviewlogo.png" alt="Logo"></img></a>
+  <a href="https://removeaioverview.com" target="_blank">
+  <img width=128 height=128 src="public/removeaioverviewlogo.png" alt="Logo" />
+  </a>
 </div>
 
 # Remove AI Overview
 
-Remove AI Overview is an open source browser extension which allows you to remove AI Overview sections from Google's search page.
-
-Available on the Chrome, Firefox and Edge browsers.
+Remove AI Overview is an open source browser extension which allows you to remove AI Overview sections from Google's search page. Available for dowload on the Chrome, Firefox and Edge browsers.
 
 Visit the website: [website](https://removeaioverview.com)
 
@@ -18,7 +18,7 @@ Visit the website: [website](https://removeaioverview.com)
 
 ## Building Locally
 
-See the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information
+See the [BUILDING.md](BUILDING.md) file for more information
 
 ## Website
 
