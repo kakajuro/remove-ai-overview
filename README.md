@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://removeaioverview.com" target="_blank">
-  <img width=128 height=128 src="public/removeaioverviewlogo.png" alt="Logo" />
+  <img width=256 height=256 src="public/removeaioverviewlogo.png" alt="Logo" />
   </a>
 </div>
 
