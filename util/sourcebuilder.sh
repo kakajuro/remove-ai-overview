@@ -8,7 +8,7 @@ fi
 
 # Remove previous data if any
 echo Setting up...
-rm -rf raosource raosource.zip
+rm -rf raosource *.zip
 mkdir raosource
 
 cd ..
