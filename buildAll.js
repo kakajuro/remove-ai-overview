@@ -59,7 +59,7 @@ for (let platform of platforms) {
   })
 
   // Remove unzipped builds
-  rimraf(inPath);
+  //rimraf(inPath);
 
 }
 
