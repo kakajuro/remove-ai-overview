@@ -25,5 +25,4 @@ cp $(ls -pa | grep -v / | grep -v md | grep -v txt) util/raosource # Copies all 
 echo Zipping...
 cd util
 tar.exe acf raosource_v"$1".zip -C raosource .
-rm -rf raosource
 echo Complete.
