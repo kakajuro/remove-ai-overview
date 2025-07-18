@@ -10,7 +10,7 @@
     "128": "icon/128.png"
   },
   "permissions": [
-    "storage",
+    "storage"
   ],
   "content_scripts": [
     {

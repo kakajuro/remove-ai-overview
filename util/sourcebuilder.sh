@@ -1,9 +1,7 @@
 #!/bin/sh
 
-if [[ $# -eq 0 ]] ; then
-    echo Provide a version number e.g. 1.0.0
-    exit 1
-fi
+# Get version from manifest file
+version=$(cat ../manifests/chrome.manifest.json | grep version | grep -v manifest | tr -d '"' | tr -d ',' | tr -d ':' | tr -d " " | sed -E "s/^[a-zA-z:]*//")
 
 
 # Remove previous data if any
@@ -24,5 +22,5 @@ cp $(ls -pa | grep -v / | grep -v md | grep -v txt) util/raosource # Copies all 
 # Zip the source
 echo Zipping...
 cd util
-tar.exe acf raosource_v"$1".zip -C raosource .
+tar.exe acf raosource_v$version.zip -C raosource .
 echo Complete.
