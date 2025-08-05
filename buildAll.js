@@ -46,7 +46,7 @@ for (let platform of platforms) {
   console.log(`Attempting to zip: ${platform.toUpperCase()}...`);
 
   let inPath = path.join(__dirname, `/builds/${platform}_dist`);
-  let outPath = path.join(__dirname, `/builds/rao_${platform}_dist_v${manifest.version}.zip`);
+  let outPath = path.join(__dirname, `/builds/rao_${platform}_v${manifest.version}.zip`);
 
   await zipdir(inPath,
     { each: path => console.log(path.replace(/^.*[\\/]/, ''), `added to ${platform.toUpperCase()} zip`), saveTo: outPath },
