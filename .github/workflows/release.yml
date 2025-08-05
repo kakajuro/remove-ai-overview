@@ -44,12 +44,6 @@ jobs:
           draft: true
           prerelease: false
 
-      - name: test
-        run: |
-          ls
-          cd ./builds
-          ls
-
       - name: Upload Chrome build to release
         id: upload-release-asset-chrome
         uses: actions/upload-release-asset@v1
