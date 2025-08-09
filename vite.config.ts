@@ -8,7 +8,7 @@ const target = process.env.TARGET || "chrome";
 const customOutputDir = process.env.OUTPUT;
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     svelte(),
     webExtension({
@@ -20,5 +20,8 @@ export default defineConfig({
   ],
   build: {
     outDir: customOutputDir ? path.join(customOutputDir, `${target.toLowerCase()}_dist`) : "dist"
+  },
+  resolve: {
+    conditions: mode === "production" ? ['browser'] : []
   }
-});
+}));
