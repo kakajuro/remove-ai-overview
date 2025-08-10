@@ -1,5 +1,5 @@
 <!-- Component modified based on:
-https://svelte.dev/playground/a8048619414a41f7bdf6fdf2b7423e4a -->
+https://svelte.dev/playground/d65a4e9f0ae74d1eb1b08d13e428af32 -->
 
 <script>
   let { id, checked, onChange } = $props();
