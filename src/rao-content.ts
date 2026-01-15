@@ -2,7 +2,10 @@ import browser from "webextension-polyfill";
 
 import { getStoredExtensionState } from "./lib/extensionState.svelte";
 
+// Global flags
 let removed = false;
+let foundItemBar = false;
+let removedAIMode = false;
 
 const getAncestor = (baseNode:HTMLElement|Element, ancestor:number) => {
 
@@ -28,10 +31,29 @@ const removeAIOverview = (forceUpdate?:boolean) => {
     removed = false;
   }
 
+  // Remove references to "AI Mode"
+  let listItems = document.querySelectorAll('div[role="list"]');
+  let itemBar = listItems[0];
+
+  if (itemBar != null) {
+    foundItemBar = true;
+  }
+
+  if (foundItemBar && !removedAIMode) {
+
+    if ((itemBar.firstChild! as HTMLElement).hasAttribute("jsname")) {
+      itemBar.removeChild(itemBar.firstChild!);
+      removedAIMode = true;
+    }
+
+  }
+
+  // Remove AI Overviews
   let searchResultsContainer = document.getElementById("search");
   let inlineAIoverviews = searchResultsContainer?.querySelectorAll("[data-mcpr][data-mcp]");
   let headingAIOverviews = document.querySelectorAll("[data-mcpr][data-mcp]");
 
+  // Remove inline overviews
   if (inlineAIoverviews) {
 
     inlineAIoverviews.forEach(aiElement => {
@@ -47,6 +69,7 @@ const removeAIOverview = (forceUpdate?:boolean) => {
 
   }
 
+  // Remove heading overviews
   if (headingAIOverviews) {
 
     headingAIOverviews.forEach(aiElement => {
