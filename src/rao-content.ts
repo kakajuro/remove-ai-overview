@@ -97,6 +97,13 @@ const removeAIOverview = (forceUpdate?:boolean) => {
 
   }
 
+  // Remove dropdown overviews
+  let dropdownOverviews = document.querySelectorAll('[data-mcp][data-mg-cp]');
+  dropdownOverviews.forEach(overview => {
+    let masterNode = getAncestor(overview, 9);
+    masterNode.remove();
+  });
+
 }
 
 const setExtensionRunning = async () => {
